@@ -37,13 +37,13 @@ for (nstn in 1:length(file_list)) {
   if (dtg[1] > ymd(paste(startYear, "01", "01", sep = "-"))) {
     ndays <- as.numeric(difftime(dtg[1], ymd(paste(startYear, "01", "01", sep = "-")), units = "days"))
     dtgSupp <- seq.Date(ymd(paste(startYear, "01", "01", sep = "-")), by = "day", length.out = ndays)
-    tempSupp <- rep(NA, ndays)
-    temp <- c(tempSupp, temp)
+    salSupp <- rep(NA, ndays)
+    sal <- c(salSupp, sal)
     dtg <- c(dtgSupp, dtg)
   } else {
     qq <- which(dtg > ymd(paste(startYear, "01", "01", sep = "-")))
     dtg <- dtg[qq]
-    temp <- temp[qq]
+    sal <- sal[qq]
   }
 
   year <- year(dtg)
@@ -60,7 +60,7 @@ for (nstn in 1:length(file_list)) {
       q <- which(year == (startYear + j - 1) & month == k)
       tarr[j, 1] <- jyear[j]
       if (length(q) > 20) {
-        tarr[j, k + 1] <- mean(temp[q], na.rm = TRUE)
+        tarr[j, k + 1] <- mean(sal[q], na.rm = TRUE)
       }
     }
   }
@@ -148,9 +148,9 @@ ggp <- ggplot(data2, aes(x = Year, y = Anomaly)) +
   scale_fill_manual(values = c("blue", "red")) +
   geom_smooth(method = "lm", se = TRUE, color = "black") +
   labs(
-    title = "Sea Surface Temperature Anomalies at BC Lighthouses",
+    title = "Sea Surface Salinity Anomalies at BC Lighthouses",
     x = "Year",
-    y = "Temperature Anomaly [°C]"
+    y = "Salinity Anomaly"
   ) +
   theme(legend.position = "none")
 
@@ -160,7 +160,7 @@ model <- lm(data2$Anomaly ~ data2$Year)
 confidence_95 <- confint(model, level = 0.95)
 
 # save plot to file
-ggsave("BC_lighthouse_T.png", width = 6, height = 3, units = "in", scale = 1, dpi = 1200)
+ggsave("BC_lighthouse_S.png", width = 6, height = 3, units = "in", scale = 1, dpi = 1200)
 
 #ggp <- ggplot(data, aes(x = Year, y = Anomaly, fill = Category)) +
 #  geom_bar(stat = "identity") +
