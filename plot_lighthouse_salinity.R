@@ -148,7 +148,7 @@ ggp <- ggplot(data2, aes(x = Year, y = Anomaly)) +
   scale_fill_manual(values = c("blue", "red")) +
   geom_smooth(method = "lm", se = TRUE, color = "black") +
   labs(
-    title = "Sea Surface Salinity Anomalies at BC Lighthouses",
+    title = "Sea Surface Salinity Anomalies - BC Lighthouses",
     x = "Year",
     y = "Salinity Anomaly"
   ) +
@@ -168,7 +168,7 @@ ggsave("BC_lighthouse_S.png", width = 6, height = 3, units = "in", scale = 1, dp
 #  geom_smooth(method = "lm", se = FALSE, color = "black") +
 #  scale_fill_manual(values = c("Below Average" = "blue", "Above Average" = "red")) +
 #  labs(
-#    title = "Sea Surface Temperature Anomalies at BC Lighthouses",
+#    title = "Sea Surface Temperature Anomalies - BC Lighthouses",
 #    x = "Year",
 #    y = "Temperature Anomaly [°C]",
 #    fill = "Category"

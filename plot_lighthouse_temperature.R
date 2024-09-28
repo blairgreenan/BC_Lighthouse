@@ -148,7 +148,7 @@ ggp <- ggplot(data2, aes(x = Year, y = Anomaly)) +
   scale_fill_manual(values = c("blue", "red")) +
   geom_smooth(method = "lm", se = TRUE, color = "black") +
   labs(
-    title = "Sea Surface Temperature Anomalies at BC Lighthouses",
+    title = "Sea Surface Temperature Anomalies - BC Lighthouses",
     x = "Year",
     y = "Temperature Anomaly [°C]"
   ) +
